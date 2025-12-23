@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Comic+Relief:wght@400;700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/styles.css" />
+    <title>WeatherApp</title>
+  </head>
+
+  <body>
+    <h1 class="app_name">WelComE to WonKy WeaTher aPp</h1>
+
+    <div class="weather_app">
+      <header class="search_block">
+        <form id="search_form">
+          <input
+            type="search"
+            placeholder="enter a city name..."
+            required
+            class="search_input"
+            id="search_input"
+            required
+          />
+          <button type="submit" class="search_button">Search</button>
+        </form>
+      </header>
+      <main>
+        <div class="current_weather">
+          <div>
+            <h1 class="current_city" id="current_city">Melbourne</h1>
+            <div class="current_details">
+              <p class="date-time" id="date-time">
+                <span class="ampm"
+                  ><em class="localtimeText">local time</em></span
+                >
+              </p>
+
+              <span id="weather_condition">Moderate rain</span><br />
+              Humidity: <strong id="humidity"> 87</strong>%, Wind:
+              <strong id="wind"> 7.2</strong> km/h
+            </div>
+          </div>
+          <div class="current_temperature">
+            <img
+              id="weather_icon"
+              src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+              alt="weather_icon"
+              class="current_temp_icon"
+            />
+
+            <span class="current_temp_value" id="current_temperature">23</span>
+            <span class="current_temp_unit">&degC</span>
+          </div>
+        </div>
+        <div class="weeklyForecast">
+          <ul class="dailyFCst" id="forecast"></ul>
+        </div>
+      </main>
+
+      <footer>
+        <p>
+          This project was coded by
+          <a href="https://github.com/JCALAM06" target="blank">Joy Calamba</a>
+          is
+          <a
+            href="https://github.com/JCALAM06/SCWK7HW_VanillaWeatherAppProject"
+            target="blank"
+          >
+            <u>open-sourced on GitHub</u></a
+          >
+          and
+          <a
+            href="https://app.netlify.com/projects/genuine-cactus-b06f2f/deploys"
+            target="blank"
+          >
+            <u>hosted on Netlify</u></a
+          >
+        </p>
+      </footer>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+  <script src="src/index.js"></script>
+</html>
