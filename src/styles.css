@@ -249,15 +249,9 @@ footer a {
 .weemoticons {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
   width: auto;
-}
-
-.weemoticons {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
 }
 
 /* Default state: hidden + ghostly */
@@ -291,26 +285,71 @@ footer a {
   transform: translateY(-50%) scale(0.95);
 }
 
-/* One-by-one: appear -> hold -> disappear */
+/* One-by-one: appear -> hold -> disappear & stay hidden*/
 @keyframes popCycle {
   0% {
     opacity: 0;
-    transform: translateY(12px) scale(0.92);
+    transform: translateY(14px) scale(0.9);
     filter: grayscale(100%) blur(2px) brightness(0.85);
   }
-  15% {
+
+  20% {
     opacity: 1;
     transform: translateY(0) scale(1);
     filter: none;
   }
-  70% {
+
+  40% {
     opacity: 1;
     transform: translateY(0) scale(1);
     filter: none;
   }
-  100% {
+
+  55% {
     opacity: 0;
-    transform: translateY(-6px) scale(0.98);
+    transform: translateY(-10px) scale(0.95);
     filter: grayscale(30%) blur(1px) brightness(0.9);
   }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+    filter: grayscale(30%) blur(1px) brightness(0.9);
+  }
+}
+
+/* run ONCE, each icon gets its own slot in the 12s timeline */
+.wx-icon {
+  animation-name: popCycle;
+  animation-duration: 4s; /* total cycle length */
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1; /* ✅ no loop */
+  animation-fill-mode: both; /* ✅ stay hidden before + after */
+  opacity: 0;
+}
+
+/* each icon gets a 1.5s slot (12s / 8 icons) */
+.i1 {
+  animation-delay: 0s;
+}
+.i2 {
+  animation-delay: 1.5s;
+}
+.i3 {
+  animation-delay: 3s;
+}
+.i4 {
+  animation-delay: 4.5s;
+}
+.i5 {
+  animation-delay: 6s;
+}
+.i6 {
+  animation-delay: 7.5s;
+}
+.i7 {
+  animation-delay: 9s;
+}
+.i8 {
+  animation-delay: 10.5s;
 }
