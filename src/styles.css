@@ -244,3 +244,73 @@ footer {
 footer a {
   color: blueviolet;
 }
+
+/** EXTRA FEATURES ... positioning for weather emoticons */
+.weemoticons {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  width: auto;
+}
+
+.weemoticons {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Default state: hidden + ghostly */
+.wx-icon {
+  position: absolute;
+  width: clamp(200px, 25vw, 300px);
+  height: auto;
+
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  filter: grayscale(100%) blur(2px) brightness(0.85);
+
+  transition: opacity 700ms ease, transform 900ms ease, filter 900ms ease;
+  will-change: opacity, transform, filter;
+}
+
+.wx-icon {
+  top: var(--y, 50%);
+  transform: translateY(-65%) scale(0.95); /* 👈 more lift */
+}
+
+/* LEFT: middle of left side */
+.wx-icon.left {
+  left: clamp(16px, 3vw, 60px);
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* RIGHT: middle of right side */
+.wx-icon.right {
+  right: clamp(16px, 3vw, 60px);
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* One-by-one: appear -> hold -> disappear */
+@keyframes popCycle {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.92);
+    filter: grayscale(100%) blur(2px) brightness(0.85);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: none;
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+    filter: grayscale(30%) blur(1px) brightness(0.9);
+  }
+}
