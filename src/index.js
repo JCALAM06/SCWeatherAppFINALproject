@@ -38,6 +38,12 @@ function formatCityDateTime(timestamp, timeZoneName) {
     .toFormat("cccc h:mm a");
 }
 
+// codes related to weather icons
+function forceHttps(url) {
+  if (!url) return "";
+  return url.replace(/^http:\/\//i, "https://");
+}
+
 // get weather forecast for city
 function displayWeather(response) {
   document.querySelector("#current_city").innerHTML = response.data.city;
@@ -75,7 +81,7 @@ function displayWeather(response) {
 
   document
     .querySelector("#weather_icon")
-    .setAttribute("src", response.data.condition.icon_url);
+    .setAttribute("src", forceHttps(response.data.condition.icon_url));
 
   document.querySelector("#current_temperature").innerHTML = Math.round(
     response.data.temperature.current
@@ -138,9 +144,10 @@ function displayForecast(response) {
           <span class="temp-min">${Math.round(day.temperature.minimum)}°</span>
         </div>
         <img class="dayFCst_icon"
-          src="${day.condition.icon_url}"
+          src="${forceHttps(day.condition.icon_url)}"
           alt="${day.condition.description}"
         />
+      
       </li>
     `;
   });
