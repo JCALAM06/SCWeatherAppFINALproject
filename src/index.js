@@ -79,9 +79,12 @@ function displayWeather(response) {
 
   document.querySelector("#wind").innerHTML = response.data.wind.speed;
 
-  document
-    .querySelector("#weather_icon")
-    .setAttribute("src", forceHttps(response.data.condition.icon_url));
+  response.data.condition.icon_url = forceHttps(
+    response.data.condition.icon_url
+  );
+
+  document.querySelector("#weather_icon").src =
+    response.data.condition.icon_url;
 
   document.querySelector("#current_temperature").innerHTML = Math.round(
     response.data.temperature.current
@@ -132,6 +135,9 @@ function displayForecast(response) {
   let forecastHTML = "";
 
   forecastDays.slice(0, 7).forEach(function (day) {
+    // sanitize icon URL
+    day.condition.icon_url = forceHttps(day.condition.icon_url);
+
     const dayLabel = currentTimeZone
       ? formatForecastDay(day.time, currentTimeZone)
       : formatDayFallback(day.time);
