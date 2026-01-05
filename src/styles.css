@@ -425,7 +425,7 @@ footer a {
   opacity: 0; 
 }  */
 
-/* each icon gets a 1.5s slot (12s / 8 icons) */
+/* each icon gets a 1.5s slot (12s / 8 icons) 
 .i1 {
   animation-delay: 0s;
 }
@@ -450,3 +450,5 @@ footer a {
 .i8 {
   animation-delay: 10.5s;
 }
+
+*/
