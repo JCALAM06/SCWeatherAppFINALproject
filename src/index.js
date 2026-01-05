@@ -1,3 +1,5 @@
+console.log("index.js loaded ✅");
+
 // source:  SC Athena
 const { DateTime } = luxon;
 let currentTimeZone = null;
@@ -161,9 +163,10 @@ searchForm.addEventListener("submit", search); // call search function
 searchCity("Melbourne");
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".wx-icon").forEach((el) => {
-    el.classList.add("play");
-  });
+  console.log("DOM ready ✅");
+  document
+    .querySelectorAll(".wx-icon")
+    .forEach((el) => el.classList.add("play"));
 });
 
-console.log("index.js loaded ✅");
+document.querySelectorAll(".wx-icon.play").length;

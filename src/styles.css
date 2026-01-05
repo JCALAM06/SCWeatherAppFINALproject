@@ -232,7 +232,6 @@ body {
 }
 
 footer {
-  /** color: rgba(39, 33, 66, 0.4); */
   font-family: "Reboto", sans-serif;
   font-size: 12px;
   text-align: center;
@@ -248,10 +247,13 @@ footer a {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  width: auto;
 }
 
-/* Default state: hidden + ghostly */
+.weather_app {
+  position: relative;
+  z-index: 5;
+}
+
 .wx-icon {
   position: absolute;
   top: var(--y, 50%);
@@ -260,21 +262,45 @@ footer a {
 
   opacity: 0;
   filter: grayscale(100%) blur(2px) brightness(0.85);
-
   will-change: opacity, transform, filter;
 }
 
-/* animation ONLY when play is added */
-.wx-icon.play {
-  animation-name: popCycle;
-  animation-duration: 3s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: 1;
-  animation-fill-mode: both;
-  /* IMPORTANT: do NOT set animation-delay here */
+.wx-icon.left {
+  left: clamp(220px, 3vw, 60px);
 }
 
-/* delays (these MUST match your HTML classes i1, i2, i3...) */
+.wx-icon.right {
+  right: clamp(220px, 3vw, 60px);
+}
+
+@keyframes popCycle {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(-50% + 14px)) scale(0.9);
+    filter: grayscale(100%) blur(2px) brightness(0.85);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+    filter: none;
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+    filter: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(calc(-50% - 10px)) scale(0.95);
+    filter: grayscale(30%) blur(1px) brightness(0.9);
+  }
+}
+
+.wx-icon.play {
+  animation: popCycle 3s ease-in-out 1 both;
+}
+
+/* ✅ delays applied to the same elements that have the animation */
 .wx-icon.i1 {
   animation-delay: 0s;
 }
@@ -296,159 +322,3 @@ footer a {
 .wx-icon.i7 {
   animation-delay: 9s;
 }
-.wx-icon.i8 {
-  animation-delay: 10.5s;
-}
-
-/* ver2
-.wx-icon {
-  position: absolute;
-  /* width: clamp(200px, 25vw, 300px); 
-  height: auto;
-
-  top: var(--y, 50%);
-  opacity: 1;
-
-  /* no transform here — keyframes controls it 
-  filter: grayscale(100%) blur(2px) brightness(0.85);
-
-  will-change: opacity, transform, filter;
-}
-
-.wx-icon {
-  width: 320px !important;
-}
-
-.wx-icon.play {
-  animation: popCycle 3s ease-in-out 1 both; /* 3s so it’s visible 
-} */
-
-/*
-.wx-icon {
-  position: absolute;
-  width: clamp(200px, 25vw, 300px);
-  height: auto;
-
-  top: var(--y, 50%);
-  opacity: 0;
-
-  transform: translateY(-50%) scale(0.95); /* more lift 
-  filter: grayscale(100%) blur(2px) brightness(0.85);
-
-  /*animation: popCycle 2s ease-in-out 1 both;
-  transition: opacity 700ms ease, transform 900ms ease, filter 900ms ease;  
-
-  will-change: opacity, transform, filter;
-}
-
-.wx-icon.play {
-  animation: popCycle 2s ease-in-out 1 both;
-} */
-
-/* LEFT: middle of left side */
-.wx-icon.left {
-  left: clamp(16px, 3vw, 60px);
-}
-
-/* RIGHT: middle of right side */
-.wx-icon.right {
-  right: clamp(16px, 3vw, 60px);
-}
-
-/* Icons appear one-by-one -> hold -> disappear & stay hidden*/
-@keyframes popCycle {
-  0% {
-    opacity: 0;
-    transform: translateY(calc(-50% + 14px)) scale(0.9);
-    filter: grayscale(100%) blur(2px) brightness(0.85);
-  }
-
-  20% {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
-    filter: none;
-  }
-
-  70% {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
-    filter: none;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(calc(-50% - 10px)) scale(0.95);
-    filter: grayscale(30%) blur(1px) brightness(0.9);
-  }
-}
-
-/*
-@keyframes popCycle {
-  0% {
-    opacity: 0;
-    transform: translateY(14px) scale(0.9);
-    filter: grayscale(100%) blur(2px) brightness(0.85);
-  }
-
-  20% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: none;
-  }
-
-  40% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: none;
-  }
-
-  55% {
-    opacity: 0;
-    transform: translateY(-10px) scale(0.95);
-    filter: grayscale(30%) blur(1px) brightness(0.9);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(-10px) scale(0.95);
-    filter: grayscale(30%) blur(1px) brightness(0.9);
-  }
-} */
-
-/* animated icons run ONCE, each icon gets its own slot in the 12s timeline 
-.wx-icon {
-  /* animation-name: popCycle;
-  animation-duration: 2s; /* total cycle length 
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: 1; /* ✅ no loop 
-  animation-fill-mode: both; /* ✅ stay hidden before + after 
-  opacity: 0; 
-}  */
-
-/* each icon gets a 1.5s slot (12s / 8 icons) 
-.i1 {
-  animation-delay: 0s;
-}
-.i2 {
-  animation-delay: 1.5s;
-}
-.i3 {
-  animation-delay: 3s;
-}
-.i4 {
-  animation-delay: 4.5s;
-}
-.i5 {
-  animation-delay: 6s;
-}
-.i6 {
-  animation-delay: 7.5s;
-}
-.i7 {
-  animation-delay: 9s;
-}
-.i8 {
-  animation-delay: 10.5s;
-}
-
-*/
