@@ -165,3 +165,5 @@ document.addEventListener("DOMContentLoaded", () => {
     el.classList.add("play");
   });
 });
+
+console.log("index.js loaded ✅");

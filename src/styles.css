@@ -254,13 +254,62 @@ footer a {
 /* Default state: hidden + ghostly */
 .wx-icon {
   position: absolute;
-  /* width: clamp(200px, 25vw, 300px); */
+  top: var(--y, 50%);
+  width: clamp(200px, 25vw, 300px);
+  height: auto;
+
+  opacity: 0;
+  filter: grayscale(100%) blur(2px) brightness(0.85);
+
+  will-change: opacity, transform, filter;
+}
+
+/* animation ONLY when play is added */
+.wx-icon.play {
+  animation-name: popCycle;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+  /* IMPORTANT: do NOT set animation-delay here */
+}
+
+/* delays (these MUST match your HTML classes i1, i2, i3...) */
+.wx-icon.i1 {
+  animation-delay: 0s;
+}
+.wx-icon.i2 {
+  animation-delay: 1.5s;
+}
+.wx-icon.i3 {
+  animation-delay: 3s;
+}
+.wx-icon.i4 {
+  animation-delay: 4.5s;
+}
+.wx-icon.i5 {
+  animation-delay: 6s;
+}
+.wx-icon.i6 {
+  animation-delay: 7.5s;
+}
+.wx-icon.i7 {
+  animation-delay: 9s;
+}
+.wx-icon.i8 {
+  animation-delay: 10.5s;
+}
+
+/* ver2
+.wx-icon {
+  position: absolute;
+  /* width: clamp(200px, 25vw, 300px); 
   height: auto;
 
   top: var(--y, 50%);
   opacity: 1;
 
-  /* no transform here — keyframes controls it */
+  /* no transform here — keyframes controls it 
   filter: grayscale(100%) blur(2px) brightness(0.85);
 
   will-change: opacity, transform, filter;
@@ -271,8 +320,8 @@ footer a {
 }
 
 .wx-icon.play {
-  animation: popCycle 3s ease-in-out 1 both; /* 3s so it’s visible */
-}
+  animation: popCycle 3s ease-in-out 1 both; /* 3s so it’s visible 
+} */
 
 /*
 .wx-icon {
