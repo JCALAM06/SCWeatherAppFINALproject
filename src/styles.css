@@ -257,7 +257,7 @@ footer a {
   width: clamp(200px, 25vw, 300px);
   height: auto;
 
-  /*opacity: 0.8; */
+  opacity: 0.8;
   transform: translateY(10px) scale(0.95);
   filter: grayscale(100%) blur(2px) brightness(0.85);
 
