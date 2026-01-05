@@ -258,28 +258,29 @@ footer a {
   height: auto;
 
   top: var(--y, 50%);
-  transform: translateY(-65%) scale(0.95); /* more lift */
+  opacity: 0;
 
-  opacity: 1;
-  transform: translateY(10px) scale(0.95);
+  transform: translateY(-65%) scale(0.95); /* more lift */
   filter: grayscale(100%) blur(2px) brightness(0.85);
 
-  animation: popCycle 2s ease-in-out 1 both;
+  /*animation: popCycle 2s ease-in-out 1 both;
+  transition: opacity 700ms ease, transform 900ms ease, filter 900ms ease;  */
 
-  transition: opacity 700ms ease, transform 900ms ease, filter 900ms ease;
   will-change: opacity, transform, filter;
+}
+
+.wx-icon.play {
+  animation: popCycle 2s ease-in-out 1 both;
 }
 
 /* LEFT: middle of left side */
 .wx-icon.left {
   left: clamp(16px, 3vw, 60px);
-  transform: translateY(-50%) scale(0.95);
 }
 
 /* RIGHT: middle of right side */
 .wx-icon.right {
   right: clamp(16px, 3vw, 60px);
-  transform: translateY(-50%) scale(0.95);
 }
 
 /* Icons appear one-by-one -> hold -> disappear & stay hidden*/
