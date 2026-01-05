@@ -246,7 +246,7 @@ footer a {
 .weemoticons {
   position: fixed;
   inset: 0;
-  z-index: 99999; /** 1 */
+  z-index: 1;
   pointer-events: none;
   width: auto;
 }
@@ -257,7 +257,7 @@ footer a {
   width: clamp(200px, 25vw, 300px);
   height: auto;
 
-  opacity: 0.8;
+  opacity: 0;
   transform: translateY(10px) scale(0.95);
   filter: grayscale(100%) blur(2px) brightness(0.85);
 
