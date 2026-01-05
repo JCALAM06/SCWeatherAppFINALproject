@@ -254,24 +254,47 @@ footer a {
 /* Default state: hidden + ghostly */
 .wx-icon {
   position: absolute;
+  /* width: clamp(200px, 25vw, 300px); */
+  height: auto;
+
+  top: var(--y, 50%);
+  opacity: 1;
+
+  /* no transform here — keyframes controls it */
+  filter: grayscale(100%) blur(2px) brightness(0.85);
+
+  will-change: opacity, transform, filter;
+}
+
+.wx-icon {
+  width: 320px !important;
+}
+
+.wx-icon.play {
+  animation: popCycle 3s ease-in-out 1 both; /* 3s so it’s visible */
+}
+
+/*
+.wx-icon {
+  position: absolute;
   width: clamp(200px, 25vw, 300px);
   height: auto;
 
   top: var(--y, 50%);
   opacity: 0;
 
-  transform: translateY(-65%) scale(0.95); /* more lift */
+  transform: translateY(-50%) scale(0.95); /* more lift 
   filter: grayscale(100%) blur(2px) brightness(0.85);
 
   /*animation: popCycle 2s ease-in-out 1 both;
-  transition: opacity 700ms ease, transform 900ms ease, filter 900ms ease;  */
+  transition: opacity 700ms ease, transform 900ms ease, filter 900ms ease;  
 
   will-change: opacity, transform, filter;
 }
 
 .wx-icon.play {
   animation: popCycle 2s ease-in-out 1 both;
-}
+} */
 
 /* LEFT: middle of left side */
 .wx-icon.left {
@@ -284,6 +307,33 @@ footer a {
 }
 
 /* Icons appear one-by-one -> hold -> disappear & stay hidden*/
+@keyframes popCycle {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(-50% + 14px)) scale(0.9);
+    filter: grayscale(100%) blur(2px) brightness(0.85);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+    filter: none;
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+    filter: none;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(calc(-50% - 10px)) scale(0.95);
+    filter: grayscale(30%) blur(1px) brightness(0.9);
+  }
+}
+
+/*
 @keyframes popCycle {
   0% {
     opacity: 0;
@@ -314,7 +364,7 @@ footer a {
     transform: translateY(-10px) scale(0.95);
     filter: grayscale(30%) blur(1px) brightness(0.9);
   }
-}
+} */
 
 /* animated icons run ONCE, each icon gets its own slot in the 12s timeline 
 .wx-icon {
