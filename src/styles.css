@@ -47,11 +47,6 @@ body {
   width: 750px;
 }
 
-/* search block 
-.search_block {
-  border-bottom: 1px solid #f9f7fe;
-} */
-
 .search_block form {
   display: flex;
   justify-content: center;
@@ -100,7 +95,7 @@ body {
   border-radius: 12px;
   display: flex;
   gap: 60px;
-  justify-content: center;
+  justify-content: center; /* block content centered within weather_app */
   margin: 0 auto;
   max-width: 90%;
 }
@@ -115,6 +110,7 @@ body {
   text-align: left;
 }
 
+/* current day weather forecast details */
 .current_details {
   color: rgba(61, 3, 132, 0.4);
   font-size: 22px;
@@ -127,12 +123,13 @@ body {
 }
 
 .date-time {
-  display: block; /* 👈 key fix */
+  display: block;
   color: rgba(61, 3, 132, 0.4);
   margin-bottom: 0;
   font-size: 24px;
 }
 
+/* humidity & wind results setting */
 .current_details strong {
   color: #f65282;
   font-size: 24px;
@@ -285,7 +282,7 @@ footer a {
   transform: translateY(-50%) scale(0.95);
 }
 
-/* One-by-one: appear -> hold -> disappear & stay hidden*/
+/* Icons appear one-by-one -> hold -> disappear & stay hidden*/
 @keyframes popCycle {
   0% {
     opacity: 0;
@@ -318,10 +315,10 @@ footer a {
   }
 }
 
-/* run ONCE, each icon gets its own slot in the 12s timeline */
+/* animated icons run ONCE, each icon gets its own slot in the 12s timeline */
 .wx-icon {
   animation-name: popCycle;
-  animation-duration: 4s; /* total cycle length */
+  animation-duration: 2s; /* total cycle length */
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1; /* ✅ no loop */
   animation-fill-mode: both; /* ✅ stay hidden before + after */
