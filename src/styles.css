@@ -246,7 +246,7 @@ footer a {
 .weemoticons {
   position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: 9999;
   pointer-events: none;
   width: auto;
 }
@@ -257,17 +257,17 @@ footer a {
   width: clamp(200px, 25vw, 300px);
   height: auto;
 
+  top: var(--y, 50%);
+  transform: translateY(-65%) scale(0.95); /* more lift */
+
   opacity: 0;
   transform: translateY(10px) scale(0.95);
   filter: grayscale(100%) blur(2px) brightness(0.85);
 
+  animation: popCycle 2s ease-in-out 1 both;
+
   transition: opacity 700ms ease, transform 900ms ease, filter 900ms ease;
   will-change: opacity, transform, filter;
-}
-
-.wx-icon {
-  top: var(--y, 50%);
-  transform: translateY(-65%) scale(0.95); /* 👈 more lift */
 }
 
 /* LEFT: middle of left side */
@@ -315,15 +315,15 @@ footer a {
   }
 }
 
-/* animated icons run ONCE, each icon gets its own slot in the 12s timeline */
+/* animated icons run ONCE, each icon gets its own slot in the 12s timeline 
 .wx-icon {
-  animation-name: popCycle;
-  animation-duration: 2s; /* total cycle length */
+  /* animation-name: popCycle;
+  animation-duration: 2s; /* total cycle length 
   animation-timing-function: ease-in-out;
-  animation-iteration-count: 1; /* ✅ no loop */
-  animation-fill-mode: both; /* ✅ stay hidden before + after */
-  opacity: 0;
-}
+  animation-iteration-count: 1; /* ✅ no loop 
+  animation-fill-mode: both; /* ✅ stay hidden before + after 
+  opacity: 0; 
+}  */
 
 /* each icon gets a 1.5s slot (12s / 8 icons) */
 .i1 {
