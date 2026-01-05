@@ -159,3 +159,9 @@ searchForm.addEventListener("submit", search); // call search function
 
 //(1) load default city with correct timezone time
 searchCity("Melbourne");
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".wx-icon").forEach((el) => {
+    el.classList.add("play");
+  });
+});

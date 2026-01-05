@@ -260,7 +260,7 @@ footer a {
   top: var(--y, 50%);
   transform: translateY(-65%) scale(0.95); /* more lift */
 
-  opacity: 0;
+  opacity: 1;
   transform: translateY(10px) scale(0.95);
   filter: grayscale(100%) blur(2px) brightness(0.85);
 
